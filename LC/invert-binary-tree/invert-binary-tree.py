@@ -1,4 +1,3 @@
-
 class Node:
     def __init__(self, data):
         self.left = None
@@ -21,11 +20,13 @@ class Node:
 
     """
 
-    def invertBinaryTree(self, tree):
-      if tree is None:
-        return []
-      self.swapLeftAndRight(tree.left)
-      self.invertBinaryTree(tree.right)
+    def invertTree(self, tree):
+        if tree is None:
+            return None
+        self.swapLeftAndRight(tree)
+        self.invertTree(tree.left)
+        self.invertTree(tree.right)
+        return tree
 
     def swapLeftAndRight(self, tree):
-      tree.left, tree.right = self.left, self.right
+        tree.left, tree.right = self.left, self.right
